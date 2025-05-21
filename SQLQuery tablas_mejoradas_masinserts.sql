@@ -492,10 +492,10 @@ INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(6,'Libreta C
 INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(7,'Libreta de Enrolamiento');
 INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(8,'Cedula de Extranjeria');
 INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
-INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Acta de Nacimiento');
-INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
-INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
-INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(10,'Acta de Nacimiento');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(11,'Numero de Seguridad Social');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(12,'CIF');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(13,'Tarjeta PAN');
 
 --INSERT TABLA DIRECCIONES
 INSERT INTO direcciones (id_direccion, calle, numero, id_localidad)
