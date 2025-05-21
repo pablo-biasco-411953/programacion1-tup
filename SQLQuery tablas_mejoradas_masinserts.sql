@@ -1,4 +1,5 @@
 -- CREAR BASE DE DATOS
+
 CREATE DATABASE proyectos_arquitectura1033;
 GO
 USE proyectos_arquitectura1033;
@@ -120,7 +121,6 @@ CREATE TABLE tipos_proyectos (
 CREATE TABLE proyectos (
     id_proyecto INT IDENTITY(1,1) NOT NULL,
     id_cliente INT NOT NULL,
-    id_plano INT,
     numero_catastral VARCHAR(50),
     id_direccion INT NOT NULL,
     superficie_terreno DECIMAL(10,2),
@@ -133,11 +133,9 @@ CREATE TABLE proyectos (
     CONSTRAINT pk_proyectos PRIMARY KEY (id_proyecto),
     CONSTRAINT fk_proyectos_clientes FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
     CONSTRAINT fk_proyectos_tipos_proyectos FOREIGN KEY (id_tipo_proyecto) REFERENCES tipos_proyectos(id_tipo_proyecto),
-    CONSTRAINT fk_proyectos_planos FOREIGN KEY (id_plano) REFERENCES planos(id_plano),
 	CONSTRAINT fk_proyectos_direcciones FOREIGN KEY (id_direccion) REFERENCES direcciones(id_direccion)
 
 );
-
 
 CREATE TABLE tipos_planos (
     id_tipo_plano INT IDENTITY(1,1) NOT NULL,
@@ -152,8 +150,6 @@ CREATE TABLE estados_planos (
     CONSTRAINT pk_estados_planos PRIMARY KEY (id_estado_plano)
 );
 
-
-
 CREATE TABLE planos (
     id_plano INT IDENTITY(1,1) NOT NULL,
     id_proyecto INT NOT NULL, 
@@ -167,8 +163,6 @@ CREATE TABLE planos (
     CONSTRAINT fk_planos_tipo FOREIGN KEY (id_tipo_plano) REFERENCES tipos_planos(id_tipo_plano),
     CONSTRAINT fk_planos_estado FOREIGN KEY (id_estado_plano) REFERENCES estados_planos(id_estado_plano)
 );
-
-
 
 -- ======================
 -- 7. FACTURACIÓN Y PAGOS
@@ -374,28 +368,142 @@ CREATE TABLE avance_etapas (
 
 
 --INSERT TABLA PAISES
-INSERT INTO paises (id_pais, nombre)
-            VALUES ();
+INSERT INTO paises (id_pais, nombre) VALUES (1, 'Argentina');
+INSERT INTO paises (id_pais, nombre) VALUES (2, 'Brasil');
+INSERT INTO paises (id_pais, nombre) VALUES (3, 'Chile');
+INSERT INTO paises (id_pais, nombre) VALUES (4, 'Uruguay');
+INSERT INTO paises (id_pais, nombre) VALUES (5, 'Paraguay');
+INSERT INTO paises (id_pais, nombre) VALUES (6, 'Peru');
+INSERT INTO paises (id_pais, nombre) VALUES (7, 'Colombia');
+INSERT INTO paises (id_pais, nombre) VALUES (8, 'Ecuador');
+INSERT INTO paises (id_pais, nombre) VALUES (9, 'Mexico');
+INSERT INTO paises (id_pais, nombre) VALUES (10,'Estados Unidos');
 
---INSERT TABLA PROVINCIAS
-INSERT INTO provincias (id_provincia, nombre, id_pais)
-                 VALUES();
+-- tabla provincias
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (1, 'Buenos Aires', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (2, 'Catamarca', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (3, 'Chaco', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (4, 'Chubut', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (5, 'Cordoba', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (6, 'Corrientes', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (7, 'Entre Rios', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (8, 'Formosa', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (9, 'Jujuy', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (10, 'La Pampa', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (11, 'La Rioja', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (12, 'Mendoza', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (13, 'Misiones', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (14, 'Neuquen', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (15, 'Rio Negro', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (16, 'Salta', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (17, 'San Juan', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (18, 'San Luis', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (19, 'Santa Cruz', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (20, 'Santa Fe', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (21, 'Santiago del Estero', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (22, 'Tierra del Fuego', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (23, 'Tucuman', 1);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (24, 'Sao Paulo', 2);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (25, 'Rio de Janeiro', 2);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (26, 'Bahia', 2);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (27, 'Minas Gerais', 2);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (28, 'Santiago', 3);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (29, 'Valparaiso', 3);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (30, 'Biobio', 3);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (31, 'Montevideo', 4);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (32, 'Canelones', 4);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (33, 'Maldonado', 4);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (34, 'Asuncion', 5);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (35, 'Central', 5);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (36, 'Alto Parana', 5);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (37, 'Lima', 6);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (38, 'Cusco', 6);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (39, 'Arequipa', 6);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (40, 'Bogota', 7);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (41, 'Antioquia', 7);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (42, 'Valle del Cauca', 7);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (43, 'Quito', 8);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (44, 'Guayas', 8);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (45, 'Manabi', 8);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (46, 'CDMX', 9);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (47, 'Jalisco', 9);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (48, 'Nuevo Leon', 9);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (49, 'Yucatan', 9);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (50, 'California', 10);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (51, 'Texas', 10);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (52, 'Florida', 10);
+INSERT INTO provincias (id_provincia, nombre, id_pais) VALUES (53, 'New York', 10);
 
 --INSERT TABLA LOCALIDADES
-INSERT INTO localidades (id_localidad, nombre, id_provincia)
-                  VALUES();
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (1, 'La Plata', 1);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (2, 'Mar del Plata', 1);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (3, 'Cordoba Capital', 2);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (4, 'Villa Carlos Paz', 2);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (5, 'Resistencia', 3);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (6, 'Presidencia Roque Saenz Pena', 3);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (7, 'Rawson', 4);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (8, 'Comodoro Rivadavia', 4);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (9, 'Parana', 5);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (10, 'Concordia', 5);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (11, 'Formosa', 6);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (12, 'Clorinda', 6);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (13, 'San Salvador de Jujuy', 7);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (14, 'Palpala', 7);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (15, 'Santa Rosa', 8);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (16, 'General Pico', 8);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (17, 'La Rioja', 9);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (18, 'Chilecito', 9);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (19, 'Mendoza', 10);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (20, 'San Rafael', 10);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (21, 'Posadas', 11);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (22, 'Obera', 11);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (23, 'Neuquen Capital', 12);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (24, 'Cutral Co', 12);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (25, 'Viedma', 13);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (26, 'Bariloche', 13);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (27, 'Salta Capital', 14);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (28, 'Oran', 14);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (29, 'San Juan Capital', 15);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (30, 'Rawson (SJ)', 15);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (31, 'San Luis', 16);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (32, 'Villa Mercedes', 16);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (33, 'Rio Gallegos', 17);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (34, 'Caleta Olivia', 17);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (35, 'Santa Fe Capital', 18);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (36, 'Rosario', 18);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (37, 'Santiago del Estero', 19);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (38, 'La Banda', 19);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (39, 'San Miguel de Tucuman', 20);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (40, 'Tafi Viejo', 20);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (41, 'Ushuaia', 21);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (42, 'Rio Grande', 21);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (43, 'Ciudad Autonoma de Buenos Aires', 22);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (44, 'Puerto Madero', 22);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (45, 'Ciudad de Buenos Aires', 23);
+INSERT INTO localidades (id_localidad, nombre, id_provincia) VALUES (46, 'Barracas', 23);
 
 --INSERT TABLA TIPOS DOCUMENTOS
-INSERT INTO tipos_documento (id_tipo_documento, descripcion)
-                      VALUES();
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(1,'DNI');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(2,'Pasaporte');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(3,'Licencia de Conducir');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(4,'Cedula Profesional');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(5,'Credencial para Votar');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(6,'Libreta Civica');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(7,'Libreta de Enrolamiento');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(8,'Cedula de Extranjeria');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Acta de Nacimiento');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
+INSERT INTO tipos_documento (id_tipo_documento, descripcion) VALUES(9,'Certificado Unico de Discapacidad');
 
 --INSERT TABLA DIRECCIONES
 INSERT INTO direcciones (id_direccion, calle, numero, id_localidad)
-                  VALUES();
+		VALUES();
 
 --INSERT TABLA TIPOS ARQUITECTOS
 INSERT INTO tipos_arquitectos (id_tipo_arquitecto, tipo, descripcion)
-                        VALUES();
+		VALUES();
 
 -- INSERT TABLA ARQUITECTOS
 INSERT INTO arquitectos (matricula_habilitante, nombre, apellido, id_tipo_arquitecto, documento, id_tipo_documento, id_direccion, telefono, email)
@@ -403,11 +511,11 @@ INSERT INTO arquitectos (matricula_habilitante, nombre, apellido, id_tipo_arquit
 
 -- INSERT TABLA TIPO CLIENTES
 INSERT INTO tipo_clientes (id_tipo_cliente, descripcion)
-VALUES();
+		VALUES();
 
 --INSERT TABLA CLIENTES
 INSERT INTO clientes (id_cliente, nombre, razon_social, cuit, cuil, id_direccion, telefono, email, id_tipo_cliente, fecha_alta, estado_cuenta)
-VALUES();
+		VALUES();
 
 --INSERT TABLA TIPOS PROYECTOS
 INSERT INTO tipos_proyectos (id_tipo_proyecto, descripcion)
